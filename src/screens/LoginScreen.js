@@ -10,15 +10,21 @@ import {
   GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
 import AppScrollView from '../components/AppScrollView';
-import Toast from 'react-native-toast-message'; // Import Toast
+import Toast from 'react-native-toast-message';
+import {useNavigation} from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
-function LoginScreen({navigation}) {
+function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const navigation = useNavigation();
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -27,7 +33,15 @@ function LoginScreen({navigation}) {
   }, []);
 
   const toggleCheckbox = () => {
-    setChecked(!checked);
+    const newChecked = !checked;
+    setChecked(newChecked);
+
+    Toast.show({
+      type: 'info',
+      position: 'top',
+      text1: newChecked ? 'Remember me checked' : 'Remember me unchecked',
+      visibilityTime: 1200,
+    });
   };
 
   const toggleShowPassword = () => {
@@ -65,16 +79,12 @@ function LoginScreen({navigation}) {
     if (valid) {
       try {
         const response = await mockHttpLogin(email, password);
-        Toast.show({
-          type: 'success',
-          position: 'top',
-          text1: response,
-          visibilityTime: 2000,
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Home'}],
         });
-        setTimeout(() => {
-          navigation.navigate('Home');
-        }, 2000); // Match with visibilityTime
       } catch (error) {
+        // Show toast message for errors
         Toast.show({
           type: 'error',
           position: 'top',
@@ -97,7 +107,10 @@ function LoginScreen({navigation}) {
         visibilityTime: 2000,
       });
       setTimeout(() => {
-        navigation.navigate('Home');
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Home'}],
+        });
       }, 2000);
     } catch (error) {
       console.error(error);
@@ -169,8 +182,8 @@ function LoginScreen({navigation}) {
             Toast.show({
               type: 'info',
               position: 'top',
-              text1: 'Forgot Password',
-              visibilityTime: 2000,
+              text1: 'Forgot Password button pressed',
+              visibilityTime: 1200,
             })
           }
           textStyle={styles.customLinkText}
@@ -196,8 +209,8 @@ function LoginScreen({navigation}) {
             Toast.show({
               type: 'info',
               position: 'top',
-              text1: 'Sign Up',
-              visibilityTime: 2000,
+              text1: 'Sign Up button pressed',
+              visibilityTime: 1200,
             })
           }
           textStyle={[
@@ -211,7 +224,7 @@ function LoginScreen({navigation}) {
       </AppText>
 
       {/* Add Toast component here */}
-      <Toast ref={ref => Toast.setRef(ref)} />
+      <Toast />
     </AppScrollView>
   );
 }
@@ -220,43 +233,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: wp('4%'),
     backgroundColor: '#f2f4f7',
   },
   logoText: {
-    fontSize: 32,
+    fontSize: wp('8%'),
     fontWeight: 'bold',
     color: '#1d4ed8',
-    marginBottom: 20,
+    marginBottom: hp('2.5%'),
     alignSelf: 'center',
   },
   loginText: {
-    fontSize: 20,
+    fontSize: wp('5%'),
     fontWeight: '600',
     color: '#111827',
-    marginBottom: 20,
+    marginBottom: hp('2.5%'),
     alignSelf: 'center',
-    fontWeight: '700',
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginTop: 10,
+    marginTop: hp('1%'),
   },
   checkboxContainer: {
     flexDirection: 'row',
   },
   checkbox: {
-    width: 20,
-    height: 20,
+    width: wp('5%'),
+    height: wp('5%'),
     borderWidth: 1,
     borderColor: '#cbd5e1',
-    marginRight: 8,
-    borderRadius: 5,
+    marginRight: wp('2%'),
+    borderRadius: wp('1%'),
   },
   checkboxText: {
-    fontSize: 14,
+    fontSize: wp('4%'),
     color: '#4b5563',
     fontWeight: '700',
     alignSelf: 'center',
@@ -266,53 +278,52 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: 'absolute',
-    right: 0,
-    top: 42,
-    padding: 8,
+    right: wp('2%'),
+    top: hp('6%'),
+    padding: wp('2%'),
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'red',
     alignSelf: 'center',
   },
   primaryButton: {
     width: '100%',
-    marginTop: 20,
+    marginTop: hp('2.5%'),
   },
   googleSignInButton: {
     width: '100%',
-    height: 48,
-    marginTop: 20,
+    height: hp('8%'),
+    marginTop: hp('2.5%'),
   },
   signUpContainer: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: hp('2.5%'),
     alignSelf: 'center',
   },
   customLinkText: {
-    fontSize: 14,
+    fontSize: wp('4%'),
     color: '#1d4ed8',
-    marginLeft: 4,
+    marginLeft: wp('1%'),
   },
   signUpText: {
-    fontSize: 14,
+    fontSize: wp('4%'),
     color: '#4b5563',
     fontWeight: '700',
   },
   signupbuttonText: {
-    fontSize: 14,
+    fontSize: wp('4%'),
     color: '#1d4ed8',
-    marginLeft: 4,
+    marginLeft: wp('1%'),
   },
   footerText: {
-    fontSize: 12,
+    fontSize: wp('3%'),
     color: '#9ca3af',
-    marginTop: 40,
+    marginTop: hp('5%'),
     alignSelf: 'center',
   },
   errorText: {
     color: 'red',
-    fontSize: 10,
-    marginRight: 260,
+    fontSize: wp('3%'),
+    marginRight: wp('60%'),
   },
 });
 

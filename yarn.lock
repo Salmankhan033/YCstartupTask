@@ -3156,11 +3156,13 @@ __metadata:
     prettier: "npm:2.8.8"
     react: "npm:18.2.0"
     react-native: "npm:0.74.5"
+    react-native-background-fetch: "npm:^4.2.5"
     react-native-date-picker: "npm:^5.0.4"
     react-native-gesture-handler: "npm:^2.18.1"
     react-native-notifications: "npm:^5.1.0"
     react-native-onboarding-swiper: "npm:^1.3.0"
     react-native-push-notification: "npm:^8.1.1"
+    react-native-responsive-screen: "npm:^1.4.2"
     react-native-safe-area-context: "npm:^4.10.8"
     react-native-splash-screen: "npm:^3.3.0"
     react-native-storage: "npm:^1.0.1"
@@ -8452,6 +8454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-background-fetch@npm:^4.2.5":
+  version: 4.2.5
+  resolution: "react-native-background-fetch@npm:4.2.5"
+  checksum: 10/f22435fa6476b70f20372bf2e9a72aea6effebda9507b37299a08212e55950fad42a34a44f241beb02b9d6594dd640e2040709c23f4f362cd1270f899a08b146
+  languageName: node
+  linkType: hard
+
 "react-native-date-picker@npm:^5.0.4":
   version: 5.0.4
   resolution: "react-native-date-picker@npm:5.0.4"
@@ -8507,6 +8516,15 @@ __metadata:
     "@react-native-community/push-notification-ios": ^1.10.1
     react-native: ">=0.33"
   checksum: 10/c03b517743b1a5bf022e7c0c0ee2001bad9478d384c6e05ec926b81ca21125dd72ccdb28930386e8bb2b26701369921e764e8a196ed113f208d9ef37c5c6d9c7
+  languageName: node
+  linkType: hard
+
+"react-native-responsive-screen@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "react-native-responsive-screen@npm:1.4.2"
+  peerDependencies:
+    react-native: ">=0.35"
+  checksum: 10/44a3378164be8f95f8d18afc9bf4a3397e29550b223e7c0ae82a19ca657d0ecb5df67307afc32bd23c0fa45646bff6b41b34fabaaf4eeb78bdd6e7f5c5e1132f
   languageName: node
   linkType: hard
 

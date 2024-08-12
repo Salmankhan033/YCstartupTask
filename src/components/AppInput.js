@@ -1,4 +1,8 @@
 import {TextInput, StyleSheet, View, Text} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import React from 'react';
 
 const AppInput = ({
@@ -32,18 +36,18 @@ export default AppInput;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    marginVertical: hp('1.25%'),
   },
   label: {
-    marginBottom: 5,
-    fontSize: 16,
+    marginBottom: hp('0.625%'),
+    fontSize: wp('4%'),
     color: '#333',
   },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    padding: 10,
-    borderRadius: 5,
-    fontSize: 16,
+    padding: wp('2.5%'),
+    borderRadius: wp('1.25%'),
+    fontSize: wp('4%'),
   },
 });

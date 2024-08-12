@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import AppText from '../components/AppText';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 function SplashScreen({navigation}) {
   useEffect(() => {
     // Simulate data loading with a timeout
@@ -26,15 +29,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff', // Optional: Set a background color
+    backgroundColor: '#fff',
   },
   image: {
-    width: 100, // Adjust the size of the image
-    height: 100, // Adjust the size of the image
-    marginBottom: 20, // Space between the image and the text
+    width: wp('25%'),
+    height: wp('25%'),
+    marginBottom: hp('2%'),
   },
   text: {
-    fontSize: 18,
+    fontSize: wp('4.5%'),
     fontWeight: 'bold',
   },
 });
