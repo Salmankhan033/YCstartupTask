@@ -1,4 +1,6 @@
 package com.ycstartuptask
+import com.wix.reactnativenotifications.RNNotificationsPackage;
+import com.transistorsoft.rnbackgroundfetch.RNBackgroundFetchPackage;
 
 import android.app.Application
 import com.facebook.react.PackageList

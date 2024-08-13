@@ -102,13 +102,10 @@ const HomeScreen = () => {
   };
 
   const handleScheduleButtonPress = () => {
-    Alert.alert(
-      'Notification Scheduled',
-      'A notification will be sent in 10 minutes.',
-    );
+    Alert.alert('Notification Scheduled', 'A notification will be send.');
 
     // Schedule notification 10 minutes from now
-    scheduleNotification(10);
+    scheduleNotification(1);
   };
 
   return (

@@ -2347,18 +2347,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/push-notification-ios@npm:^1.11.0":
-  version: 1.11.0
-  resolution: "@react-native-community/push-notification-ios@npm:1.11.0"
-  dependencies:
-    invariant: "npm:^2.2.4"
-  peerDependencies:
-    react: ">=16.6.3"
-    react-native: ">=0.58.4"
-  checksum: 10/5a43b69cb75090ff771acc44c9a081f2000f5e2c91484eed1e2f8749f98f7d37a7ce6e63d60caadf372ad204c9a1b3dc5d99cec576f5e751a45a89cdde0a6b96
-  languageName: node
-  linkType: hard
-
 "@react-native-google-signin/google-signin@npm:^12.2.1":
   version: 12.2.1
   resolution: "@react-native-google-signin/google-signin@npm:12.2.1"
@@ -2744,6 +2732,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/add@npm:^2":
+  version: 2.0.3
+  resolution: "@types/add@npm:2.0.3"
+  checksum: 10/c15815ef0e4903113f7fda84b4c2704a1b694fd6f53a6e3c9327b5b7067aba676c75e696b950401de45be7646b37b7059303a7bb5c4363de3eb3e0c06d25f565
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -2874,13 +2869,6 @@ __metadata:
     "@types/react": "npm:*"
     react-native: "npm:*"
   checksum: 10/be9fe662dc629b814a37526854a7f4cd741d5dbf2fb6bd7b40a28b758249d8c6a41f06692d683c1dbf4a33de5b63d34bbccbd5a3b249142c4089b9abbcaa8160
-  languageName: node
-  linkType: hard
-
-"@types/react-native-push-notification@npm:^8":
-  version: 8.1.4
-  resolution: "@types/react-native-push-notification@npm:8.1.4"
-  checksum: 10/e5b9895cbe7f630f9f9ad1a3c2b92a5e85a28b9e5bd52552b2e5b782b1a430601067a39e999f43b1e0332fc3dfecca8a4215052c8d89ccdea44808df2e32d124
   languageName: node
   linkType: hard
 
@@ -3138,7 +3126,6 @@ __metadata:
     "@babel/preset-env": "npm:^7.20.0"
     "@babel/runtime": "npm:^7.20.0"
     "@react-native-async-storage/async-storage": "npm:^1.24.0"
-    "@react-native-community/push-notification-ios": "npm:^1.11.0"
     "@react-native-google-signin/google-signin": "npm:^12.2.1"
     "@react-native/babel-preset": "npm:0.74.87"
     "@react-native/eslint-config": "npm:0.74.87"
@@ -3146,10 +3133,11 @@ __metadata:
     "@react-native/typescript-config": "npm:0.74.87"
     "@react-navigation/native": "npm:^6.1.18"
     "@react-navigation/stack": "npm:^6.4.1"
+    "@types/add": "npm:^2"
     "@types/react": "npm:^18.2.6"
     "@types/react-native-onboarding-swiper": "npm:^1"
-    "@types/react-native-push-notification": "npm:^8"
     "@types/react-test-renderer": "npm:^18.0.0"
+    add: "npm:^2.0.6"
     babel-jest: "npm:^29.6.3"
     eslint: "npm:^8.19.0"
     jest: "npm:^29.6.3"
@@ -3161,7 +3149,6 @@ __metadata:
     react-native-gesture-handler: "npm:^2.18.1"
     react-native-notifications: "npm:^5.1.0"
     react-native-onboarding-swiper: "npm:^1.3.0"
-    react-native-push-notification: "npm:^8.1.1"
     react-native-responsive-screen: "npm:^1.4.2"
     react-native-safe-area-context: "npm:^4.10.8"
     react-native-splash-screen: "npm:^3.3.0"
@@ -3170,6 +3157,7 @@ __metadata:
     react-native-vector-icons: "npm:^10.1.0"
     react-test-renderer: "npm:18.2.0"
     typescript: "npm:5.0.4"
+    yarn: "npm:^1.22.22"
   languageName: unknown
   linkType: soft
 
@@ -3214,6 +3202,13 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 10/d08c2d122bba32d0861e0aa840b2ee25946c286d5dc5990abca991baf8cdbfbe199b05aacb221b979411a2fea36f83e26b5ac4f6b4e0ce49038c62316c1848f0
+  languageName: node
+  linkType: hard
+
+"add@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "add@npm:2.0.6"
+  checksum: 10/1d2c0780a660edfc161b7784a846865b28dcd8514cc6042c8e283298f379cd3b150412b67a12603a4ac885912f05759f3e2993c27219f85d1face316ffc0b175
   languageName: node
   linkType: hard
 
@@ -8509,16 +8504,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-push-notification@npm:^8.1.1":
-  version: 8.1.1
-  resolution: "react-native-push-notification@npm:8.1.1"
-  peerDependencies:
-    "@react-native-community/push-notification-ios": ^1.10.1
-    react-native: ">=0.33"
-  checksum: 10/c03b517743b1a5bf022e7c0c0ee2001bad9478d384c6e05ec926b81ca21125dd72ccdb28930386e8bb2b26701369921e764e8a196ed113f208d9ef37c5c6d9c7
-  languageName: node
-  linkType: hard
-
 "react-native-responsive-screen@npm:^1.4.2":
   version: 1.4.2
   resolution: "react-native-responsive-screen@npm:1.4.2"
@@ -10460,6 +10445,16 @@ __metadata:
     y18n: "npm:^5.0.5"
     yargs-parser: "npm:^21.1.1"
   checksum: 10/abb3e37678d6e38ea85485ed86ebe0d1e3464c640d7d9069805ea0da12f69d5a32df8e5625e370f9c96dd1c2dc088ab2d0a4dd32af18222ef3c4224a19471576
+  languageName: node
+  linkType: hard
+
+"yarn@npm:^1.22.22":
+  version: 1.22.22
+  resolution: "yarn@npm:1.22.22"
+  bin:
+    yarn: bin/yarn.js
+    yarnpkg: bin/yarn.js
+  checksum: 10/98d80230beaa81f186b2256dff5ef9dce2dd6073c94299209f8e562da9018cff4275c95c27c788aaa4a9c3c186ea8a9aee9a5b83570696a4c8a9d1fff2d4da3a
   languageName: node
   linkType: hard
 

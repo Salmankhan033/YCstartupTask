@@ -8,6 +8,7 @@ import AppText from '../components/AppText';
 import {
   GoogleSignin,
   GoogleSigninButton,
+  statusCodes,
 } from '@react-native-google-signin/google-signin';
 import AppScrollView from '../components/AppScrollView';
 import Toast from 'react-native-toast-message';
@@ -27,9 +28,19 @@ function LoginScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    GoogleSignin.configure({
-      // Your Google Sign-In configuration here
-    });
+    const configureGoogleSignin = async () => {
+      try {
+        await GoogleSignin.configure({
+          webClientId: 'YOUR_GOOGLE_WEB_CLIENT_ID',
+          offlineAccess: true,
+          forceCodeForRefreshToken: true,
+        });
+      } catch (error) {
+        console.error('Google Sign-in configuration error', error);
+      }
+    };
+
+    configureGoogleSignin();
   }, []);
 
   const toggleCheckbox = () => {
@@ -49,7 +60,6 @@ function LoginScreen() {
   };
 
   const mockHttpLogin = (email, password) => {
-    // Simulate an HTTP call with a promise
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (email === 'admin' && password === 'password123') {
@@ -57,7 +67,7 @@ function LoginScreen() {
         } else {
           reject('Invalid credentials');
         }
-      }, 1500); // Simulate network delay
+      }, 1500);
     });
   };
 
@@ -79,6 +89,7 @@ function LoginScreen() {
     if (valid) {
       try {
         const response = await mockHttpLogin(email, password);
+        console.log(response); // Log successful login message
         navigation.reset({
           index: 0,
           routes: [{name: 'Home'}],
@@ -97,15 +108,19 @@ function LoginScreen() {
 
   const handleGoogleLogin = async () => {
     try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
+      await GoogleSignin.hasPlayServices(); // Check if Google Play Services are available
+      const userInfo = await GoogleSignin.signIn(); // Initiate Google Sign-In
+      console.log('Google Sign-In Status: Success');
+      console.log('User Info:', userInfo); // Log the Google sign-in response to the console
+
       Toast.show({
         type: 'success',
         position: 'top',
         text1: 'Google Login Successful',
         visibilityTime: 2000,
       });
+
+      // Navigate to the Home screen after a short delay
       setTimeout(() => {
         navigation.reset({
           index: 0,
@@ -113,11 +128,21 @@ function LoginScreen() {
         });
       }, 2000);
     } catch (error) {
-      console.error(error);
+      console.error('Google Sign-In Error:', error);
+
+      let message = 'Google Login Failed';
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        message = 'User cancelled the login flow';
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        message = 'Signing in...';
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        message = 'Play Services not available or outdated';
+      }
+
       Toast.show({
         type: 'error',
         position: 'top',
-        text1: 'Google Login Failed',
+        text1: message,
         visibilityTime: 2000,
       });
     }
@@ -223,7 +248,6 @@ function LoginScreen() {
         © 2023 Per Diem. All rights reserved.
       </AppText>
 
-      {/* Add Toast component here */}
       <Toast />
     </AppScrollView>
   );

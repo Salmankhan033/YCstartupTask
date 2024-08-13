@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1083740323165",
+    "project_id": "easy-downloader-8b6a5",
+    "storage_bucket": "easy-downloader-8b6a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083740323165:android:4277c75af052116aadbcb4",
+        "android_client_info": {
+          "package_name": "com.sallu.easydownloader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083740323165-hsl0k81uhe6ac8dfjb71qhjstu12rjjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwnMEpR2zqrBaWDIfp4vjfnKoypiFC2c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083740323165-hsl0k81uhe6ac8dfjb71qhjstu12rjjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-9363636613614686~7333092746"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083740323165:android:a3be387d33ecfa1fadbcb4",
+        "android_client_info": {
+          "package_name": "com.ycstartuptask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083740323165-hsl0k81uhe6ac8dfjb71qhjstu12rjjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwnMEpR2zqrBaWDIfp4vjfnKoypiFC2c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083740323165-hsl0k81uhe6ac8dfjb71qhjstu12rjjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

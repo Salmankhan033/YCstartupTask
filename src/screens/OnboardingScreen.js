@@ -21,15 +21,23 @@ function OnboardingScreen({navigation}) {
   const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
+    console.log('useEffect triggered'); // Log to check if useEffect is running
+
     const checkOnboardingStatus = async () => {
+      console.log('Checking onboarding status'); // Log to check if function is called
+
       try {
         const onboardingCompleted = await AsyncStorage.getItem(
           'onboardingCompleted',
         );
+        console.log('onboardingCompleted value:', onboardingCompleted); // Log the value retrieved
+
         if (onboardingCompleted === 'true') {
+          console.log('Navigating to Login'); // Log before navigating
           navigation.navigate('Login');
         } else {
-          setLoading(false); // Set loading to false once the check is complete
+          console.log('Setting loading to false'); // Log when loading is set to false
+          setLoading(false);
         }
       } catch (error) {
         console.error('Error checking onboarding status:', error);
@@ -37,12 +45,20 @@ function OnboardingScreen({navigation}) {
       }
     };
 
-    checkOnboardingStatus();
+    try {
+      checkOnboardingStatus();
+    } catch (error) {
+      console.error(
+        'Error in useEffect while checking onboarding status:',
+        error,
+      );
+    }
   }, [navigation]);
 
   const markOnboardingAsCompleted = async () => {
     try {
       await AsyncStorage.setItem('onboardingCompleted', 'true');
+      console.log('Onboarding marked as completed');
     } catch (error) {
       console.error('Error marking onboarding as completed:', error);
     }
@@ -117,10 +133,12 @@ function OnboardingScreen({navigation}) {
       ]}
       onDone={() => {
         markOnboardingAsCompleted(); // Set the flag when onboarding is completed
+        console.log('Onboarding completed');
         navigation.navigate('Login');
       }}
       onSkip={() => {
         markOnboardingAsCompleted(); // Set the flag when onboarding is skipped
+        console.log('Onboarding skipped');
         navigation.navigate('Login');
       }}
       DotComponent={Square}
