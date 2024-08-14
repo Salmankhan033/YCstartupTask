@@ -9,6 +9,25 @@
 
 # App screenshots
 
+### Splash Screen
+
+<img width="324" alt="Screenshot 2024-08-15 at 1 08 24 AM" src="https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f">
+
+## Onboarding sreen
+
+| Onboard 1st screen | Onboard 2nd screen | Onboard 3rd screen | |
+|--------------------|--------------------|--------------------|--------------------|
+| ![Onboard 1st screen](https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f) | ![Onboard 2nd screen](https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f) | ![Onboard 3rd screen](https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f)  |
+
+
+### Login Screen
+
+<img width="334" alt="Screenshot 2024-08-15 at 1 04 22 AM" src="https://github.com/user-attachments/assets/0a9dd423-3ea6-4b6f-88fa-df27781fcffd">
+
+### Home Screen
+
+<img width="339" alt="Screenshot 2024-08-15 at 1 03 22 AM" src="https://github.com/user-attachments/assets/4edffb4d-e6b9-4299-9ff3-64ea1bfe93c8">
+
 
 # Getting Started
 
@@ -87,3 +106,12 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+
+
+
+
+
+
+
