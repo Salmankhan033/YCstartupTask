@@ -1,4 +1,14 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# App Name: YCstartupTask
+
+# App preview Videos 
+[**IOS Video**](https://drive.google.com/file/d/1ZukRGVHm1Q6E7pgtiPee1dBn5ssmcrTO/view?usp=sharing) 
+
+[**Android Video**](https://drive.google.com/file/d/1fl9ecrQk1r93ANDIRG4CwFYQD_kqyjkG/view?usp=sharing) 
+
+
+
+# App screenshots
+
 
 # Getting Started
 
