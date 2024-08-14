@@ -116,7 +116,7 @@ const HomeScreen = () => {
     };
 
     const onTimeout = async taskId => {
-      console.warn('[BackgroundFetch] TIMEOUT task: ', taskId);
+      console.log('[BackgroundFetch] TIMEOUT task: ', taskId);
       // BackgroundFetch.finish(taskId);
     };
 
@@ -196,11 +196,12 @@ const HomeScreen = () => {
           }
           ListFooterComponent={
             <>
-              <View style={{paddingBottom: hp('2%')}}></View>
+              <View style={{paddingBottom: hp('2%')}} />
               <Button
                 title="Click to Schedule Notification"
                 onPress={handleScheduleButtonPress}
               />
+              <View style={{paddingBottom: hp('4%')}} />
               <Toast />
             </>
           }

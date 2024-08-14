@@ -98,10 +98,6 @@ function OnboardingScreen({navigation}) {
     <AppText style={styles.title}>{title}</AppText>
   );
 
-  const Square = ({isLight, selected}) => {
-    return <View style={{}}>{selected && <Text>{activePage + 1}</Text>}</View>;
-  };
-
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
@@ -142,7 +138,7 @@ function OnboardingScreen({navigation}) {
         console.log('Onboarding skipped');
         navigation.navigate('Login');
       }}
-      DotComponent={Square}
+      // DotComponent={Square}
       showSkip={true}
       showNext={true}
       showDone={true}

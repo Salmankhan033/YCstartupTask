@@ -16,7 +16,7 @@ function AppNavigator() {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Onboarding"
           screenOptions={{headerShown: false}}>
           {/* <Stack.Screen
           name="Splash"

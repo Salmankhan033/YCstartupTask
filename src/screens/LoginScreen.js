@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
     marginHorizontal: Platform.OS === 'ios' ? wp('4%') : wp('1%'),
   },
   googleSignInButton: {
-    // width: '100%',
+    width: '100%',
     height: hp('8%'),
     marginTop: hp('2.5%'),
   },
