@@ -1,4 +1,4 @@
-import {TextInput, StyleSheet, View, Text} from 'react-native';
+import {TextInput, StyleSheet, View, Text, Platform} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -37,6 +37,8 @@ export default AppInput;
 const styles = StyleSheet.create({
   container: {
     marginVertical: hp('1.25%'),
+    // marginHorizontal: wp('5%'),
+    marginHorizontal: Platform.OS === 'ios' ? wp('4%') : wp('1%'),
   },
   label: {
     marginBottom: hp('0.625%'),
@@ -49,5 +51,6 @@ const styles = StyleSheet.create({
     padding: wp('2.5%'),
     borderRadius: wp('1.25%'),
     fontSize: wp('4%'),
+    // marginHorizontal: wp('5%'),
   },
 });

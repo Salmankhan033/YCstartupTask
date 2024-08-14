@@ -1,36 +1,33 @@
 #import "AppDelegate.h"
+
+#import <React/RCTBundleURLProvider.h>
 #import <UserNotifications/UserNotifications.h>
 #import <React/RCTLinkingManager.h>
-//#import <RNCPushNotificationIOS.h> // Uncomment if using push notifications
-#import <React/RCTBundleURLProvider.h>
-#import "RNNotifications.h"
-@implementation AppDelegate
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [RNNotifications startMonitorNotifications]; // -> Add this line
+#import "RNBackgroundFetch.h"
+#import <TSBackgroundFetch/TSBackgroundFetch.h>
 
-    return YES;
-}
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [RNNotifications didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-  [RNNotifications didFailToRegisterForRemoteNotificationsWithError:error];
-}
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-  [RNNotifications didReceiveBackgroundNotification:userInfo withCompletionHandler:completionHandler];
-}
+//#import <RNCPushNotificationIOS.h> // Uncomment if using push notifications
+
+#import "RNSplashScreen.h" 
+#import "RNNotifications.h"
+
+
+@implementation AppDelegate
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // Set up push notification handling if needed
-//  [RNCPushNotificationIOS didFinishLaunchingWithOptions:launchOptions];
-  
-  // Configure React Native
-  self.moduleName = @"YCstartupTask"; // Ensure this matches your app's module name
+  self.moduleName = @"YCstartupTask";
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
+
+   bool didFinish=[super application:application didFinishLaunchingWithOptions:launchOptions];
   
-  // Ensure to return YES to indicate successful launch
-  return YES;
-}
+  [RNSplashScreen show];  // here
+  [RNNotifications startMonitorNotifications];
+   [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+  return didFinish;
+ }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
@@ -45,5 +42,13 @@
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
-
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [RNNotifications didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [RNNotifications didFailToRegisterForRemoteNotificationsWithError:error];
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+  [RNNotifications didReceiveBackgroundNotification:userInfo withCompletionHandler:completionHandler];
+}
 @end

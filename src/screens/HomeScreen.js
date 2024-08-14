@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,8 @@ import {
   Alert,
   TouchableOpacity,
   StyleSheet,
+  SafeAreaView,
+  Platform,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,7 +21,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import DatePicker from 'react-native-date-picker';
 import AppInput from '../components/AppInput';
 import AppText from '../components/AppText';
-import {scheduleNotification} from '../utils/notificationUtils'; // Updated import
+import {scheduleNotification} from '../utils/notificationUtils';
+import BackgroundFetch from 'react-native-background-fetch';
 
 const HomeScreen = () => {
   const [toggles, setToggles] = useState(Array(10).fill(false));
@@ -31,6 +34,7 @@ const HomeScreen = () => {
   useEffect(() => {
     loadToggles();
     loadItems();
+    initBackgroundFetch(); // Initialize BackgroundFetch when component mounts
   }, []);
 
   const loadToggles = async () => {
@@ -62,16 +66,6 @@ const HomeScreen = () => {
   };
 
   const addItem = () => {
-    if (date === null) {
-      Alert.alert(
-        'Date Required',
-        'Please select a date before adding an item.',
-        [{text: 'OK'}],
-        {cancelable: false},
-      );
-      return;
-    }
-
     if (newItem.trim() === '') {
       Alert.alert(
         'Empty Field',
@@ -79,6 +73,12 @@ const HomeScreen = () => {
         [{text: 'OK'}],
         {cancelable: false},
       );
+      return;
+    }
+    if (date === null) {
+      Alert.alert('Date Required', 'Please select a date.', [{text: 'OK'}], {
+        cancelable: false,
+      });
       return;
     }
 
@@ -102,77 +102,111 @@ const HomeScreen = () => {
   };
 
   const handleScheduleButtonPress = () => {
-    Alert.alert('Notification Scheduled', 'A notification will be send.');
+    Alert.alert('Notification Scheduled', 'A notification will be sent.');
 
     // Schedule notification 10 minutes from now
     scheduleNotification(1);
   };
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={toggles}
-        keyExtractor={(item, index) => `toggle-${index}`}
-        renderItem={({item, index}) => (
-          <View style={styles.toggleContainer}>
-            <AppText style={styles.toggleText}>{`Toggle ${index + 1}`}</AppText>
-            <Switch value={item} onValueChange={() => handleToggle(index)} />
-          </View>
-        )}
-        ListHeaderComponent={
-          <>
-            <AppInput
-              label="Item Name"
-              placeholder="Enter an item name"
-              value={newItem}
-              onChangeText={setNewItem}
-              style={styles.inputField}
-            />
+  const initBackgroundFetch = async () => {
+    const onEvent = async taskId => {
+      console.log('[BackgroundFetch] task: ', taskId);
+      scheduleNotification(1);
+      // BackgroundFetch.finish(taskId);
+    };
 
-            <TouchableOpacity
-              onPress={() => setShowDatePicker(true)}
-              style={styles.datePickerContainer}>
-              <Icon name="calendar" size={20} color="black" />
-              <AppText style={styles.dateText}>
-                {date ? date.toLocaleDateString() : 'Select a date'}
-              </AppText>
-            </TouchableOpacity>
-            {showDatePicker && (
-              <DatePicker
-                modal
-                open={showDatePicker}
-                date={date || new Date()}
-                onConfirm={selectedDate => {
-                  setDate(selectedDate);
-                  setShowDatePicker(false);
-                }}
-                onCancel={() => setShowDatePicker(false)}
+    const onTimeout = async taskId => {
+      console.warn('[BackgroundFetch] TIMEOUT task: ', taskId);
+      // BackgroundFetch.finish(taskId);
+    };
+
+    let status = await BackgroundFetch.configure(
+      {minimumFetchInterval: 1},
+      onEvent,
+      onTimeout,
+    );
+
+    console.log('[BackgroundFetch] configure status: ', status);
+
+    BackgroundFetch.scheduleTask({
+      taskId: 'com.foo.customtask',
+      forceAlarmManager: true,
+      delay: 5000, // <-- milliseconds
+    });
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <FlatList
+          data={toggles}
+          keyExtractor={(item, index) => `toggle-${index}`}
+          renderItem={({item, index}) => (
+            <View style={styles.toggleContainer}>
+              <AppText style={styles.toggleText}>{`Toggle ${
+                index + 1
+              }`}</AppText>
+              <Switch value={item} onValueChange={() => handleToggle(index)} />
+            </View>
+          )}
+          ListHeaderComponent={
+            <>
+              <AppInput
+                label="Item Name"
+                placeholder="Enter an item name"
+                value={newItem}
+                onChangeText={setNewItem}
+                style={styles.inputField}
               />
-            )}
-            <Button title="Add Item" onPress={addItem} />
-            <FlatList
-              data={items}
-              keyExtractor={(item, index) => `item-${index}`}
-              renderItem={({item}) => (
-                <View style={styles.itemContainer}>
-                  <AppText>{`${item.name} - ${item.date}`}</AppText>
-                </View>
+
+              <TouchableOpacity
+                onPress={() => setShowDatePicker(true)}
+                style={styles.datePickerContainer}>
+                <Icon name="calendar" size={20} color="black" />
+                <AppText style={styles.dateText}>
+                  {date ? date.toLocaleDateString() : 'Select a date'}
+                </AppText>
+              </TouchableOpacity>
+              {showDatePicker && (
+                <DatePicker
+                  modal
+                  open={showDatePicker}
+                  date={date || new Date()}
+                  onConfirm={selectedDate => {
+                    setDate(selectedDate);
+                    setShowDatePicker(false);
+                  }}
+                  onCancel={() => setShowDatePicker(false)}
+                />
               )}
-              style={styles.itemList}
-            />
-          </>
-        }
-        ListFooterComponent={
-          <>
-            <Button
-              title="Click to Schedule Notification"
-              onPress={handleScheduleButtonPress}
-            />
-            <Toast />
-          </>
-        }
-      />
-    </View>
+
+              <Button title="Add Item" onPress={addItem} />
+              <View style={{paddingBottom: hp('2%')}}></View>
+              <FlatList
+                data={items}
+                keyExtractor={(item, index) => `item-${index}`}
+                renderItem={({item}) => (
+                  <View style={styles.itemContainer}>
+                    <AppText>{`${item.name} - ${item.date}`}</AppText>
+                  </View>
+                )}
+                style={styles.itemList}
+              />
+            </>
+          }
+          ListFooterComponent={
+            <>
+              <View style={{paddingBottom: hp('2%')}}></View>
+              <Button
+                title="Click to Schedule Notification"
+                onPress={handleScheduleButtonPress}
+              />
+              <Toast />
+            </>
+          }
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -185,6 +219,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: hp('1%'),
+    marginHorizontal: Platform.OS === 'ios' ? wp('4%') : wp('1%'),
   },
   toggleText: {
     marginRight: wp('4%'),
@@ -204,6 +239,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: wp('3%'),
     borderRadius: wp('2%'),
+    marginHorizontal: Platform.OS === 'ios' ? wp('4%') : wp('1%'),
   },
   dateText: {
     marginLeft: wp('2%'),

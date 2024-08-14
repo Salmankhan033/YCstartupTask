@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
@@ -187,12 +188,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#1d4ed8',
-    padding: wp('2.4%'),
-    borderRadius: wp('1.25%'),
+    padding: Platform.OS === 'ios' ? wp('3%') : wp('2.4%'),
+    borderRadius: Platform.OS === 'ios' ? wp('3%') : wp('1.25%'),
     color: '#fff',
     marginHorizontal: wp('3%'),
-    width: wp('15%'),
-    height: hp('6%'),
+    width: Platform.OS === 'ios' ? wp('19%') : wp('15%'),
+    height: Platform.OS === 'ios' ? wp('11%') : hp('6%'),
     justifyContent: 'center',
   },
   buttonChecks: {
@@ -201,8 +202,8 @@ const styles = StyleSheet.create({
     borderRadius: wp('1.25%'),
     color: '#fff',
     marginHorizontal: wp('3%'),
-    width: wp('15%'),
-    height: hp('6%'),
+    width: Platform.OS === 'ios' ? wp('19%') : wp('15%'),
+    height: Platform.OS === 'ios' ? wp('11%') : hp('6%'),
     justifyContent: 'center',
     alignItems: 'center',
   },

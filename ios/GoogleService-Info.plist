@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>7800647706-c86vh9nvv93jln2q3qmnkus9ggrvhfe4.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBydMYyMsadAzqnnPH5rZBXgM8iKwbU-Ts</string>
+	<key>GCM_SENDER_ID</key>
+	<string>7800647706</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.yctask</string>
+	<key>PROJECT_ID</key>
+	<string>easykaam-c92a8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>easykaam-c92a8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:7800647706:ios:45b5b255f043142a6421a3</string>
+	<key>DATABASE_URL</key>
+	<string>https://easykaam-c92a8.firebaseio.com</string>
+</dict>
+</plist>

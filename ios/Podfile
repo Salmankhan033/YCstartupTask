@@ -15,7 +15,9 @@ if linkage != nil
 end
 
 target 'YCstartupTask' do
+  pod 'react-native-notifications', :podspec => '../node_modules/react-native-notifications/react-native-notifications.podspec'
   config = use_native_modules!
+  
 
   use_react_native!(
     :path => config[:reactNativePath],

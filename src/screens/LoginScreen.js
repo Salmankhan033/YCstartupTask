@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppInput from '../components/AppInput';
 import AppButton from '../components/AppButton';
@@ -277,11 +277,13 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    marginTop: hp('1%'),
+    // width: '100%',
+    // marginTop: hp('1%'),
+    marginHorizontal: Platform.OS === 'ios' ? wp('5%') : wp('2%'),
   },
   checkboxContainer: {
     flexDirection: 'row',
+    // backgroundColor: 'red',
   },
   checkbox: {
     width: wp('5%'),
@@ -296,25 +298,28 @@ const styles = StyleSheet.create({
     color: '#4b5563',
     fontWeight: '700',
     alignSelf: 'center',
+    // backgroundColor: 'red',
   },
   passwordContainer: {
     position: 'relative',
   },
   eyeIcon: {
     position: 'absolute',
-    right: wp('2%'),
-    top: hp('6%'),
+    right: Platform.OS === 'ios' ? wp('5%') : wp('2%'),
+    top: Platform.OS === 'ios' ? wp('9%') : wp('10%'),
     padding: wp('2%'),
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
+    // backgroundColor: 'red',
   },
   primaryButton: {
-    width: '100%',
+    // width: '100%',
     marginTop: hp('2.5%'),
+    marginHorizontal: Platform.OS === 'ios' ? wp('4%') : wp('1%'),
   },
   googleSignInButton: {
-    width: '100%',
+    // width: '100%',
     height: hp('8%'),
     marginTop: hp('2.5%'),
   },

@@ -3,13 +3,15 @@ import {Notifications} from 'react-native-notifications';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const scheduleNotification = async minutes => {
+  console.log('wellcome notification');
   const now = new Date();
   const fireDate = new Date(now.getTime() + minutes * 60 * 1000); // Adding minutes to current time
 
   Notifications.postLocalNotification({
-    title: 'Roman Toggle Notification',
+    title: 'Toggle Notification',
     body: await getOnTogglesMessage(),
-    fireDate: fireDate.toISOString(), // Schedule the notification for the specified time
+    // Uncomment the line below to schedule the notification for the specified time
+    // fireDate: fireDate.toISOString(),
   });
 };
 
@@ -29,3 +31,17 @@ const getOnTogglesMessage = async () => {
     ', ',
   )} are ON. Please turn them OFF.`;
 };
+
+// Registering notifications
+Notifications.registerRemoteNotifications();
+
+Notifications.events().registerRemoteNotificationsRegistered(event => {
+  console.log('Device Token Received', event.deviceToken);
+});
+
+Notifications.events().registerNotificationReceivedForeground(
+  (notification, completion) => {
+    console.log('Notification Received - Foreground', notification);
+    completion({alert: true, sound: true, badge: false});
+  },
+);
