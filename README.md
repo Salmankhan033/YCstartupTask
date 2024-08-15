@@ -9,31 +9,79 @@
 
 # App screenshots
 
-### Splash Screen
+## Splash Screen
+ Display a splash screen when the app launches.
+ <table>
+ <tr>
+  <td>Splash screen</td>
 
-<img width="324" alt="Screenshot 2024-08-15 at 1 08 24 AM" src="https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f">
+ </tr>
+   <tr>
+        <td> <img src="https://github.com/user-attachments/assets/76dd30d8-874e-437f-a33f-e5ff683e082f" alt="Drawing"  width="150" height="300"/> </td>
+    
 
-## Onboarding screen
-
-| Onboard 1st screen | Onboard 2nd screen | Onboard 3rd screen | |
-|--------------------|--------------------|--------------------|--------------------|
-| ![Onboard 1st screen](https://github.com/user-attachments/assets/1a52cf5a-010b-46c7-b59b-84a0bf687a03) | ![Onboard 2nd screen](https://github.com/user-attachments/assets/d072d4aa-2b3e-46ad-8e67-d62108e3143f) | ![Onboard 3rd screen](https://github.com/user-attachments/assets/6b36951c-523e-4084-9f35-a1397f5b8159)  |
-
-
-### Login Screen
-| Login validation screen | Onboard 2nd screen |  | |
-|--------------------|--------------------|--------------------|--------------------|
-| ![Onboard 1st screen](https://github.com/user-attachments/assets/1e4006a9-36c9-4a66-bcd0-218c4bf2371b) | ![Onboard 2nd screen](https://github.com/user-attachments/assets/0a9dd423-3ea6-4b6f-88fa-df27781fcffd) |  
+ </tr>
+</table>
 
 
-### Home Screen
+   ## Onboarding Screens
+   These screens are appear only one time. When run the app 1st time.
+   <table>
+ <tr>
+  <td>Onboard first screen</td>
+   <td>Onboard second screen</td>
+     <td>Onboard third screen</td>
+ </tr>
+   <tr>
+        <td> <img src="https://github.com/user-attachments/assets/1a52cf5a-010b-46c7-b59b-84a0bf687a03" alt="Drawing"  width="150" height="300"/> </td>
+        <td> <img src="https://github.com/user-attachments/assets/d072d4aa-2b3e-46ad-8e67-d62108e3143f" alt="Drawing"  width="150" height="300"/> </td>
+        <td> <img src="https://github.com/user-attachments/assets/6b36951c-523e-4084-9f35-a1397f5b8159"  width="150" height="300"/> </td>
 
-<img width="339" alt="Screenshot 2024-08-15 at 1 03 22 AM" src="https://github.com/user-attachments/assets/4edffb4d-e6b9-4299-9ff3-64ea1bfe93c8">
+ </tr>
+</table>
 
 
-### Show the notification on the home screen
+## Login Screen
 
-<img width="339" alt="Screenshot 2024-08-15 at 1 03 22 AM" src="https://github.com/user-attachments/assets/10691ff8-eb37-42ac-9e31-0e96416db950">
+
+  *  The login should only succeed if the user enters the following credentials:
+      * Username: admin
+      * Password: password123
+  * Mock HTTP Call:
+     * Implement a mock HTTP call to simulate the login process.
+       * The mock call should return a success response if the provided credentials match admin/password123.
+         
+### Google Login
+   * Google Login: The Google signup/login feature is currently not working properly because the app is registered in Firebase, which requires additional configuration and approval from Google.  
+ <table>
+ <tr>
+  <td>Login validation screen</td>
+   <td>Login screen</td>
+
+ </tr>
+ 
+   <tr>
+        <td> <img src="https://github.com/user-attachments/assets/1e4006a9-36c9-4a66-bcd0-218c4bf2371b" alt="Drawing"  width="150" height="300"/> </td>
+        <td> <img src="https://github.com/user-attachments/assets/0a9dd423-3ea6-4b6f-88fa-df27781fcffd" alt="Drawing"  width="150" height="300"/> </td>
+       
+
+ </tr>
+</table>
+
+## Home Screen
+ <table>
+ <tr>
+  <td>Home screen</td>
+  <td>Receive notification on top</td>
+Show the notification on the home screen to click the button of the home screen 
+
+ </tr>
+   <tr>
+        <td> <img src="https://github.com/user-attachments/assets/4edffb4d-e6b9-4299-9ff3-64ea1bfe93c8" alt="Drawing"  width="150" height="300"/> </td>
+        <td> <img src="https://github.com/user-attachments/assets/10691ff8-eb37-42ac-9e31-0e96416db950" alt="Drawing"  width="150" height="300"/> </td>
+
+ </tr>
+</table>
 
 
 # Getting Started
